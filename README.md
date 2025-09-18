@@ -1,5 +1,10 @@
 # Urna Eleitoral
 
+## Diagrama de Casos de Uso
+<img width="1319" height="731" alt="Diagrama sem nome drawio" src="https://github.com/user-attachments/assets/82520a92-4ecc-4e62-a9f6-db997b44e057" />
+
+
+## Especificação de Casos de Uso
 
 | **Identificação** | **UC00 – Identificar Eleitor** |
 |---|---|
