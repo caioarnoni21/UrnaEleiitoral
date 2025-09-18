@@ -13,7 +13,7 @@
 | **Pré-condição** | UEv inicializada e período de votação aberto. |
 | **Pós-condição** | Eleitor habilitado para votar ou bloqueado em caso de falha. |
 | **Fluxo Principal** | 1. Eleitor se apresenta ao terminal;<br>2. Sistema solicita nº de inscrição/biometria;<br>3. Sistema verifica se pertence à seção e não votou;<br>4. Sistema confirma identificação e libera acesso ao voto. |
-| **Fluxo Alternativo** | **[FA01] Leitura por QR:** operador lê QR/código → ir ao passo 3;<br>**[FA02] Falha biométrica:** após 3 tentativas, permitir digitar nº/documento → passo 3. |
+| **Fluxo Alternativo** | **[FA02] Falha biométrica:** após 3 tentativas, permitir digitar nº/documento  |
 | **Fluxo Exceção** | **[FE01] Eleitor não encontrado:** encerra processo;<br>**[FE02] Eleitor já votou:** encerra processo;<br>**[FE03] Período encerrado:** bloqueia voto. |
 
 ---
