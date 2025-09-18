@@ -1,6 +1,5 @@
 # Urna Eleitoral
 
-### UC00 – Identificar Eleitor
 
 | **Identificação** | **UC00 – Identificar Eleitor** |
 |---|---|
@@ -13,8 +12,6 @@
 | **Fluxo Exceção** | **[FE01] Eleitor não encontrado:** encerra processo;<br>**[FE02] Eleitor já votou:** encerra processo;<br>**[FE03] Período encerrado:** bloqueia voto. |
 
 ---
-
-### UC01 – Votar
 
 | **Identificação** | **UC01 – Votar** |
 |---|---|
