@@ -203,7 +203,7 @@
 |---|---|
 | **Função** | Gerar arquivo PDF/CSV com os resultados. |
 | **Atores** | Sistema do Governo |
-| **Pré-condição** | UC15 em exibição. |
+| **Pré-condição** | UC13 finalizado;<br>UC15 em exibição. |
 | **Pós-condição** | Arquivo gerado e disponível para download. |
 | **Fluxo Principal** | 1. Administrador escolhe formato;<br>2. Sistema gera arquivo com hash/assinatura. |
 | **Fluxo Alternativo** | Não há |
