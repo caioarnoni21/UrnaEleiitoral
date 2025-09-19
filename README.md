@@ -12,8 +12,8 @@
 | **Atores** | Eleitor |
 | **Pré-condição** | UEv inicializada e período de votação aberto. |
 | **Pós-condição** | Eleitor habilitado para votar ou bloqueado em caso de falha. |
-| **Fluxo Principal** | 1. Eleitor se apresenta ao terminal;<br>2. Sistema solicita nº de inscrição/biometria;<br>3. Sistema verifica se pertence à seção e não votou;<br>4. Sistema confirma identificação e libera acesso ao voto. |
-| **Fluxo Alternativo** | **[FA02] Falha biométrica:** após 3 tentativas, permitir digitar nº/documento  |
+| **Fluxo Principal** | **1. Identificar eleitor:**<br>a) Eleitor se apresenta ao terminal;<br>b) Sistema solicita nº de inscrição/biometria;<br>c). Sistema verifica se pertence à seção e não votou;<br>d) Sistema confirma identificação e libera acesso ao voto. |
+| **Fluxo Alternativo** | **[FA01] Falha biométrica:** <br>a) Eleitor se apresenta ao terminal;<br>b) Sistema solicita biometria;<br>c) Eleitor apresenta a biometria com falha; <br>d) Sistema após reconhecer 3 tentativas falhas, apresenta digitação manual do n°/documento; <br>e) Sistema prossegue para a validação (passo 1.c).  |
 | **Fluxo Exceção** | **[FE01] Eleitor não encontrado:** encerra processo;<br>**[FE02] Eleitor já votou:** encerra processo;<br>**[FE03] Período encerrado:** bloqueia voto. |
 
 ---
@@ -24,8 +24,8 @@
 | **Atores** | Eleitor |
 | **Pré-condição** | UC00 concluído com sucesso. |
 | **Pós-condição** | Voto(s) do eleitor registrados e eleitor marcado como "votou". |
-| **Fluxo Principal** | 1. Sistema apresenta o primeiro cargo;<br>2. Eleitor digita o número do candidato (**UC02**);<br>3. Sistema exibe dados e botões **Confirmar**, **Corrigir** e **Branco**;<br>4. Eleitor confirma (**UC03**);<br>5. Sistema contabiliza voto;<br>6. Avança para o próximo cargo ou encerra. |
-| **Fluxo Alternativo** | **[FA01] Branco:** eleitor pressiona Branco (**UC04**);<br>**[FA02] Nulo:** eleitor digita número inexistente (**UC05**);<br>**[FA03] Corrigir:** eleitor pressiona Corrigir e retorna ao passo 2. |
+| **Fluxo Principal** | **1. Votar em um candidato:**<br>a) Sistema apresenta o primeiro cargo;<br>b) Eleitor digita o número do candidato (**UC02**);<br>c) Sistema exibe dados e botões **Confirmar**, **Corrigir** e **Branco ([FA03])**;<br>d) Eleitor confirma (**UC03**);<br>e) Sistema contabiliza voto;<br>f) Avança para o próximo cargo ou encerra. |
+| **Fluxo Alternativo** | **2. [FA01] Votar em branco:** <br>a) Sistema apresenta campo para digitar;<br>b) Eleitor pressiona o botão "branco";<br>c) Sistema contabiliza voto;<br>d)Sistema avança para o próximo cargo ou encerra. (**UC04**);<br><br>3. **[FA02] Votar nulo:**<br> a) Sistema apresenta campo para digitar;<br>b) Eleitor digita número inexistente (**UC05**);<br>c) Sistema verifica número inexistente;<br>d) Sistema informa "voto nulo" e oferece "confirmar" ou "corrigir";<br> e) Eleitor "confirmar";<br>f) Sistema contabiliza e avança; <br><br> **4. [FA03] Corrigir voto:**<br> a) Eleitor pressiona "corrigir";<br>b)Sistema limpa entrada;<br>c) Eleitor digita novo número;<br>d) Sistema exibe o novo candidato e retorna ao passo 1.e. |
 | **Fluxo Exceção** | **[FE01] Timeout:** reinicia tela; após 2 timeouts, cancela sessão;<br>**[FE02] Falha de hardware:** reinicia tela sem perder votos confirmados. |
 
 ---
@@ -36,8 +36,8 @@
 | **Atores** | Eleitor |
 | **Pré-condição** | UC01 em andamento. |
 | **Pós-condição** | Candidato selecionado e pronto para confirmação. |
-| **Fluxo Principal** | 1. Sistema apresenta campo para digitar número;<br>2. Eleitor digita número;<br>3. Sistema apresenta informações do candidato. |
-| **Fluxo Alternativo** | **[FA01] Seleção por lista/foto:** eleitor seleciona na lista. |
+| **Fluxo Principal** | **1. Selecionar candidato:**<br>a) Sistema apresenta campo para digitar número(ou lista/foto);<br>b) Eleitor digita número do candidato;<br>c) Sistema apresenta informações do candidato.<br>d)Eleitor confirma voto (UC01). |
+| **Fluxo Alternativo** | **[FA01] Seleção por lista/foto:**<br> a) Eleitor navega e escolhe o candidato pela lista/foto;<br>b) Sistema carrega dados do candidato e segue para confirmação. |
 | **Fluxo Exceção** | **[FE01] Número inexistente:** vai para UC05 (Nulo). |
 
 ---
@@ -49,9 +49,9 @@
 | **Atores** | Eleitor |
 | **Pré-condição** | Uma escolha foi feita (nominal, branco ou nulo). |
 | **Pós-condição** | Voto gravado e contabilizado localmente. |
-| **Fluxo Principal** | 1. Sistema grava o voto em memória;<br>2. Atualiza contador do cargo;<br>3. Passa para o próximo cargo ou finaliza. |
+| **Fluxo Principal** | **1. Confirmar voto:**<br>a) Sistema grava o voto em memória;<br>b). Sistema atualiza contador do cargo;<br>c) Sistema passa para o próximo cargo ou finaliza. |
 | **Fluxo Alternativo** | Não há |
-| **Fluxo Exceção** | **[FE01] Falha de gravação:** tentar novamente ou acionar operador. |
+| **Fluxo Exceção** | **[FE01] Falha de gravação:**<br>a) Sistema tenta novamente;<br> Sistema aciona operador caso o erro persista. |
 
 ---
 
@@ -61,7 +61,7 @@
 | **Atores** | Eleitor |
 | **Pré-condição** | UC01 em andamento para o cargo. |
 | **Pós-condição** | Voto branco contabilizado. |
-| **Fluxo Principal** | 1. Eleitor pressiona Branco;<br>2. Sistema registra branco;<br>3. Avança para próximo cargo ou encerra. |
+| **Fluxo Principal** | **1. Branco:**<br>a) Eleitor pressiona "Branco";<br>b) Sistema registra branco;<br>c) Sistema avança para próximo cargo ou encerra. |
 | **Fluxo Alternativo** | Não há |
 | **Fluxo Exceção** | Não há |
 
@@ -73,7 +73,7 @@
 | **Atores** | Eleitor |
 | **Pré-condição** | UC02 detecta número inválido. |
 | **Pós-condição** | Voto nulo contabilizado. |
-| **Fluxo Principal** | 1. Sistema informa número inválido;<br>2. Eleitor confirma ou corrige;<br>3. Se confirma → contabiliza nulo; se corrige → retorna à digitação. |
+| **Fluxo Principal** | **1. Nulo:**<br>a) Sistema informa número inválido;<br>b) Eleitor confirma;<br>c) Sistema contabiliza nulo. |
 | **Fluxo Alternativo** | Não há |
 | **Fluxo Exceção** | Não há |
 
@@ -85,7 +85,7 @@
 | **Atores** | Sistema do Governo |
 | **Pré-condição** | Administrador autenticado. |
 | **Pós-condição** | UEv cadastrada e habilitada. |
-| **Fluxo Principal** | 1. Administrador informa código/serial e seção;<br>2. Sistema valida e salva. |
+| **Fluxo Principal** | **1. Cadastro de UEv:**<br>a) Sistema do Governoenvia código/serial, seção e local;<br>b) Sistema valida e salva. |
 | **Fluxo Alternativo** | Não há |
 | **Fluxo Exceção** | **[FE01] UEv duplicada:** rejeitar. |
 
@@ -97,7 +97,7 @@
 | **Atores** | Sistema do Governo |
 | **Pré-condição** | UEv e eleitores cadastrados. |
 | **Pós-condição** | Relação salva para carga na UEv. |
-| **Fluxo Principal** | 1. Selecionar UEv;<br>2. Associar lista de eleitores;<br>3. Salvar. |
+| **Fluxo Principal** | **1. Relacionamento:**a) Sistema do governo seleciona UEv;<br>b) Sistema envia a lista de eleitores da seção;<br>c) Sistema armazena as associações. |
 | **Fluxo Alternativo** | Não há |
 | **Fluxo Exceção** | Não há |
 
@@ -109,7 +109,7 @@
 | **Atores** | Sistema do Governo |
 | **Pré-condição** | Administrador autenticado. |
 | **Pós-condição** | Eleitor registrado. |
-| **Fluxo Principal** | 1. Inserir dados do eleitor;<br>2. Validar unicidade;<br>3. Salvar. |
+| **Fluxo Principal** | **1. Cadastro:**<br>a) Sistema recebe nome, n? de inscrição e documento (e foto/biometria opcional);<br>b) Sistema valida exclusividade do n? de inscrição;<br>c) Sistema salva e confirma; |
 | **Fluxo Alternativo** | Não há |
 | **Fluxo Exceção** | **[FE01] Número duplicado:** rejeitar. |
 
@@ -121,7 +121,7 @@
 | **Atores** | Sistema do Governo |
 | **Pré-condição** | Cargos definidos. |
 | **Pós-condição** | Candidato registrado. |
-| **Fluxo Principal** | 1. Inserir nome, número e foto;<br>2. Validar unicidade do número;<br>3. Salvar. |
+| **Fluxo Principal** | **1. Cadastro:**<br>a) Sistema recebe cargo, nome, apelido, número e foto;<br>b) Sistema valida exclusividade do número por cargo;<br>c) Sistema salva e confirma. |
 | **Fluxo Alternativo** | Não há |
 | **Fluxo Exceção** | **[FE01] Número duplicado:** rejeitar. |
 
@@ -133,7 +133,7 @@
 | **Atores** | Sistema do Governo |
 | **Pré-condição** | Administrador autenticado. |
 | **Pós-condição** | Lista de cargos criada/atualizada. |
-| **Fluxo Principal** | 1. Administrador insere até 8 cargos;<br>2. Salva. |
+| **Fluxo Principal** | **1. Definir cargos:**<br>a) Sistema recebe lista de cargos(máximo 8);<br>b) Sistema valida limites e salva; |
 | **Fluxo Alternativo** | Não há |
 | **Fluxo Exceção** | Não há |
 
@@ -145,7 +145,7 @@
 | **Atores** | Sistema do Governo |
 | **Pré-condição** | Administrador autenticado. |
 | **Pós-condição** | Período de votação configurado. |
-| **Fluxo Principal** | 1. Inserir datas de início/fim;<br>2. Salvar. |
+| **Fluxo Principal** | **1. Período:**<br>a) Sistema recebe data/hora de abertura e encerramento;<br>b) Sistema aplica configuração e registra auditoria. |
 | **Fluxo Alternativo** | Não há |
 | **Fluxo Exceção** | **[FE01] Tentativa de alterar após início:** rejeitar. |
 
@@ -157,7 +157,7 @@
 | **Atores** | Sistema do Governo |
 | **Pré-condição** | UEv cadastrada e transmissão concluída. |
 | **Pós-condição** | Resultado armazenado e pronto para contagem. |
-| **Fluxo Principal** | 1. Receber pacote assinado;<br>2. Validar assinatura e integridade;<br>3. Armazenar e marcar como importado. |
+| **Fluxo Principal** | **1. Recebimento:**<br>a) Sistema recebe pacote assinado da UEv;<br>b) Sistema valida assinatura digital e integridade;<br>c) Sistema confirma identidade dda UEv;<br>d) Sistema armazena e marca UEv como importada. |
 | **Fluxo Alternativo** | Não há |
 | **Fluxo Exceção** | **[FE01] UEv não cadastrada:** rejeitar;<br>**[FE02] Pacote duplicado:** ignorar;<br>**[FE03] Falha de integridade:** solicitar reenvio. |
 
@@ -169,7 +169,7 @@
 | **Atores** | Sistema do Governo |
 | **Pré-condição** | Pelo menos uma UEv importada. |
 | **Pós-condição** | Totais calculados. |
-| **Fluxo Principal** | 1. Somar votos nominais, brancos e nulos;<br>2. Calcular percentuais;<br>3. Chamar UC14 (Reportar Ausência);<br>4. Chamar UC15 (Apresentar Resultados). |
+| **Fluxo Principal** | **1. Contabilização:**<br>a) Sistema agrega votos por cargo e por UEv;<br>b) Sistema soma nominais, brancos e nulos;<br>c) Sistema calcula percentuais e ranking por candidato;<br>d) Sistema Gera totais por UEv e total geral;<br>e) Sistema executa UC14 - Reportar ausência;<br>f) Sistema executa UC15 - Apresentar resultados. |
 | **Fluxo Alternativo** | Não há |
 | **Fluxo Exceção** | **[FE01] UEv ausente:** marcar apuração como parcial. |
 
@@ -181,7 +181,7 @@
 | **Atores** | Sistema do Governo |
 | **Pré-condição** | Contabilização concluída. |
 | **Pós-condição** | Relatório de ausentes gerado. |
-| **Fluxo Principal** | 1. Comparar lista de eleitores com votantes;<br>2. Gerar relatório de ausentes. |
+| **Fluxo Principal** | **1. Ausência:**<br>a) Sistema compara base de eleitores com a lista de votantes por UEv;<br>b) Sistema identifica ausentes por UEv;<br>c) Sistema gera listagem de ausentes. |
 | **Fluxo Alternativo** | Não há |
 | **Fluxo Exceção** | Não há |
 
@@ -193,7 +193,7 @@
 | **Atores** | Sistema do Governo |
 | **Pré-condição** | UC13 finalizado. |
 | **Pós-condição** | Resultados exibidos. |
-| **Fluxo Principal** | 1. Exibir totais por cargo;<br>2. Oferecer opção de gerar relatório (UC16). |
+| **Fluxo Principal** | **1. Exibição:**<br>a) Sistema mostra totais por cargo (nominais, brancos, nulos, %);<br>b) Sistema permite filtragem por UEv; c) Sistema oferece opção UC16 - Gerar relatórios. |
 | **Fluxo Alternativo** | Não há |
 | **Fluxo Exceção** | **[FE01] Falha ao renderizar:** mostrar mensagem e permitir nova tentativa. |
 
@@ -205,6 +205,6 @@
 | **Atores** | Sistema do Governo |
 | **Pré-condição** | UC15 em exibição. |
 | **Pós-condição** | Arquivo gerado e disponível para download. |
-| **Fluxo Principal** | 1. Administrador escolhe formato;<br>2. Sistema gera arquivo com hash/assinatura. |
+| **Fluxo Principal** | **1. Geração:**<br>a) Sistema permite que seja selecionado o formato(PDF/CSV);<br>b) Sistema compõe documento com hash/assinatura/QR;<br>c) Sistema disponibiliza para download ou envio oficial. |
 | **Fluxo Alternativo** | Não há |
 | **Fluxo Exceção** | **[FE01] Erro de geração:** exibir mensagem e permitir nova tentativa. |
