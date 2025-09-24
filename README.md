@@ -27,7 +27,7 @@
 | **Pós-condição** | Voto(s) do eleitor registrados e eleitor marcado como "votou". |
 | **Fluxo Principal** | **1. Votar em um candidato:**<br>a) Sistema apresenta o primeiro cargo;<br>b) Eleitor digita o número do candidato (**UC03**);<br>c) Sistema exibe dados e botões **Confirmar**, **Corrigir** e **Branco**;<br>d) Eleitor confirma (**UC04**);<br>e) Sistema contabiliza voto;<br>f) Avança para o próximo cargo ou encerra. |
 | **Fluxo Alternativo** | **2. Votar em branco:** <br>a) Sistema apresenta o primeiro cargo;<br>b) Eleitor pressiona o botão "branco";<br>c) Sistema contabiliza voto;<br>d)Sistema avança para o próximo cargo ou encerra. (**UC05**);<br><br> **3. Votar nulo:**<br> a) Sistema apresenta o primeiro cargo;<br>b) Eleitor digita número inexistente (**UC06**);<br>c) Sistema verifica número inexistente;<br>d) Sistema informa "voto nulo" e oferece "confirmar" ou "corrigir";<br> e) Eleitor "confirmar";<br>f) Sistema contabiliza e avança; <br><br> **4. Corrigir voto:**<br> a)Sistema apresenta o primeiro cargo;<br>b) Eleitor preenche o campo de digitação;<br>c) Eleitor pressiona "corrigir";<br>d) Sistema limpa entrada;<br>e) Eleitor digita novo número;<br>f) Sistema exibe o novo candidato e retorna ao passo 1.e. |
-| **Fluxo Exceção** | **5. Timeout:**<br>a) Sistema apresenta o primeiro cargo;<br>b) Eleitor não toma nenhuma ação;<br>c) Sistema apresenta uma mensagem de aviso de timeout; d) Após 2 timeouts, cancela sessão. |
+| **Fluxo Exceção** | **5. Timeout:**<br>a) Sistema apresenta o primeiro cargo;<br>b) Eleitor não toma nenhuma ação;<br>c) Sistema apresenta uma mensagem de aviso de timeout;<br> d) Após 2 timeouts, cancela sessão. |
 
 ---
 
@@ -35,11 +35,11 @@
 |---|---|
 | **Função** | Permitir que o eleitor escolha o candidato para o cargo atual. |
 | **Atores** | Eleitor |
-| **Pré-condição** | UC01 em andamento. |
+| **Pré-condição** | UC02 em andamento. |
 | **Pós-condição** | Candidato selecionado e pronto para confirmação. |
-| **Fluxo Principal** | **1. Selecionar candidato:**<br>a) Sistema apresenta campo para digitar número(ou lista/foto);<br>b) Eleitor digita número do candidato;<br>c) Sistema apresenta informações do candidato.<br>d)Eleitor confirma voto (UC01). |
-| **Fluxo Alternativo** | **[FA01] Seleção por lista/foto:**<br> a) Eleitor navega e escolhe o candidato pela lista/foto;<br>b) Sistema carrega dados do candidato e segue para confirmação. |
-| **Fluxo Exceção** | **[FE01] Número inexistente:** vai para UC05 (Nulo). |
+| **Fluxo Principal** | **1. Selecionar candidato:**<br>a) Sistema apresenta campo para digitar número(ou lista/foto);<br>b) Eleitor digita número do candidato;<br>c) Sistema apresenta informações do candidato.<br>d)Eleitor confirma voto (UC04). |
+| **Fluxo Alternativo** | **2. Seleção por lista/foto:**<br> a)Sistema apresenta campo para digitar núumero de candidato;<br>b)Eleitor seleciona botão "listar candidatos";<br>c) Sistema apresenta lista dos candidatos com suas respectivas fotos;<br>c) Eleitor navega e escolhe o candidato pela lista/foto;<br>b) Sistema carrega dados do candidato e segue para confirmação. |
+| **Fluxo Exceção** | **3. Número inexistente:**<br>a) Sistema apresenta campo para digitar número de candidato;<br>b)Eleitor digita número inexistente;<br>c) Sistema apresenta opção de voto nulo. (UC05 (Nulo)). |
 
 ---
 
