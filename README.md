@@ -98,7 +98,7 @@
 | **Atores** | Sistema do Governo |
 | **Pré-condição** | UEv e eleitores cadastrados. |
 | **Pós-condição** | Relação salva para carga na UEv. |
-| **Fluxo Principal** | **1. Relacionamento:**<br.a) Sistema do governo seleciona UEv;<br>b) Sistema envia a lista de eleitores da seção;<br>c) Sistema armazena as associações. |
+| **Fluxo Principal** | **1. Relacionamento:**<br>.a) Sistema do governo seleciona UEv;<br>b) Sistema envia a lista de eleitores da seção;<br>c) Sistema armazena as associações. |
 | **Fluxo Alternativo** | Não há |
 | **Fluxo Exceção** | Não há |
 
