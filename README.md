@@ -13,8 +13,8 @@
 | **Pré-condição** | UEv inicializada e período de votação aberto. |
 | **Pós-condição** | Eleitor habilitado para votar ou bloqueado em caso de falha. |
 | **Fluxo Principal** | **1. Identificar eleitor:**<br>a) Eleitor se apresenta ao terminal;<br>b) Sistema solicita nº de inscrição/biometria;<br>c). Sistema verifica se pertence à seção e não votou;<br>d) Sistema confirma identificação e libera acesso ao voto. |
-| **Fluxo Alternativo** | **[FA01] Falha biométrica:** <br>a) Eleitor se apresenta ao terminal;<br>b) Sistema solicita biometria;<br>c) Eleitor apresenta a biometria com falha; <br>d) Sistema após reconhecer 3 tentativas falhas, apresenta digitação manual do n°/documento; <br>e) Sistema prossegue para a validação (passo 1.c).  |
-| **Fluxo Exceção** | **[FE01] Eleitor não encontrado:** encerra processo;<br>**[FE02] Eleitor já votou:** encerra processo;<br>**[FE03] Período encerrado:** bloqueia voto. |
+| **Fluxo Alternativo** | **Falha biométrica:** <br>a) Eleitor se apresenta ao terminal;<br>b) Sistema solicita n° de inscrição/biometria;<br>c) Eleitor apresenta a biometria com falha; <br>d) Sistema após reconhecer 3 tentativas falhas, apresenta digitação manual do n°/documento; <br>e) Sistema prossegue para a validação (passo 1.c).  |
+| **Fluxo Exceção** | **Eleitor não encontrado:**<br>a) Eleitor se apresenta ao terminal;<br>b) Sistema solicita n° de inscrição/biometria;<br>c) Sistema não encontra eleitor e encerra processo.<br><br>**Eleitor já votou:**<br>a) Eleitor se apresenta ao terminal.<br>b) Sistema solicita n° de inscrição/biometria;<br> c) Sistema verifica se pertence à secção e verifica que eleitor já votou; d) Sistema encerra processo.<br><br>**Período encerrado:** <br>a) Eleitor se apresenta ao terminal;<br>b) Sistema não solicita dados e informa que o período de votação já está encerrado. |
 
 ---
 
