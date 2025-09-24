@@ -52,7 +52,7 @@
 | **Pós-condição** | Voto gravado e contabilizado localmente. |
 | **Fluxo Principal** | **1. Confirmar voto:**<br>a) Sistema grava o voto em memória;<br>b). Sistema atualiza contador do cargo;<br>c) Sistema passa para o próximo cargo ou finaliza. |
 | **Fluxo Alternativo** | Não há |
-| **Fluxo Exceção** | **[FE01] Falha de gravação:**<br>a) Sistema tenta novamente;<br> Sistema aciona operador caso o erro persista. |
+| **Fluxo Exceção** | **2. Falha de gravação:**<br>a) Sistema tenta novamente;<br>b) Sistema aciona operador caso o erro persista. |
 
 ---
 
@@ -60,7 +60,7 @@
 |---|---|
 | **Função** | Registrar voto em branco para o cargo atual. |
 | **Atores** | Eleitor |
-| **Pré-condição** | UC01 em andamento para o cargo. |
+| **Pré-condição** | UC02 em andamento para o cargo. |
 | **Pós-condição** | Voto branco contabilizado. |
 | **Fluxo Principal** | **1. Branco:**<br>a) Eleitor pressiona "Branco";<br>b) Sistema registra branco;<br>c) Sistema avança para próximo cargo ou encerra. |
 | **Fluxo Alternativo** | Não há |
@@ -72,7 +72,7 @@
 |---|---|
 | **Função** | Registrar voto nulo (número inexistente). |
 | **Atores** | Eleitor |
-| **Pré-condição** | UC02 detecta número inválido. |
+| **Pré-condição** | UC03 detecta número inválido. |
 | **Pós-condição** | Voto nulo contabilizado. |
 | **Fluxo Principal** | **1. Nulo:**<br>a) Sistema informa número inválido;<br>b) Eleitor confirma;<br>c) Sistema contabiliza nulo. |
 | **Fluxo Alternativo** | Não há |
@@ -86,9 +86,9 @@
 | **Atores** | Sistema do Governo |
 | **Pré-condição** | Administrador autenticado. |
 | **Pós-condição** | UEv cadastrada e habilitada. |
-| **Fluxo Principal** | **1. Cadastro de UEv:**<br>a) Sistema do Governoenvia código/serial, seção e local;<br>b) Sistema valida e salva. |
+| **Fluxo Principal** | **1. Cadastro de UEv:**<br>a) Sistema do Governo envia código/serial, seção e local;<br>b) Sistema valida e salva. |
 | **Fluxo Alternativo** | Não há |
-| **Fluxo Exceção** | **[FE01] UEv duplicada:** rejeitar. |
+| **Fluxo Exceção** | **2. UEv duplicada:** a) Sistema do Governo envia código/serial, seção e local;<br>b)Sistema verifica que UEv já está cadastrada e retorna aviso. |
 
 ---
 
