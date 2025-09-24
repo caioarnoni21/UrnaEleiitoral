@@ -88,7 +88,7 @@
 | **Pós-condição** | UEv cadastrada e habilitada. |
 | **Fluxo Principal** | **1. Cadastro de UEv:**<br>a) Sistema do Governo envia código/serial, seção e local;<br>b) Sistema valida e salva. |
 | **Fluxo Alternativo** | Não há |
-| **Fluxo Exceção** | **2. UEv duplicada:** a) Sistema do Governo envia código/serial, seção e local;<br>b)Sistema verifica que UEv já está cadastrada e retorna aviso. |
+| **Fluxo Exceção** | **2. UEv duplicada:**<br> a) Sistema do Governo envia código/serial, seção e local;<br>b)Sistema verifica que UEv já está cadastrada e retorna aviso. |
 
 ---
 
@@ -98,7 +98,7 @@
 | **Atores** | Sistema do Governo |
 | **Pré-condição** | UEv e eleitores cadastrados. |
 | **Pós-condição** | Relação salva para carga na UEv. |
-| **Fluxo Principal** | **1. Relacionamento:**a) Sistema do governo seleciona UEv;<br>b) Sistema envia a lista de eleitores da seção;<br>c) Sistema armazena as associações. |
+| **Fluxo Principal** | **1. Relacionamento:**<br.a) Sistema do governo seleciona UEv;<br>b) Sistema envia a lista de eleitores da seção;<br>c) Sistema armazena as associações. |
 | **Fluxo Alternativo** | Não há |
 | **Fluxo Exceção** | Não há |
 
