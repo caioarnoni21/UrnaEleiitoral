@@ -98,7 +98,7 @@
 | **Atores** | Sistema do Governo |
 | **Pré-condição** | UEv e eleitores cadastrados. |
 | **Pós-condição** | Relação salva para carga na UEv. |
-| **Fluxo Principal** | **1. Relacionamento:**<br>.a) Sistema do governo seleciona UEv;<br>b) Sistema envia a lista de eleitores da seção;<br>c) Sistema armazena as associações. |
+| **Fluxo Principal** | **1. Relacionamento:**<br>a) Sistema do governo seleciona UEv;<br>b) Sistema envia a lista de eleitores da seção;<br>c) Sistema armazena as associações. |
 | **Fluxo Alternativo** | Não há |
 | **Fluxo Exceção** | Não há |
 
@@ -110,9 +110,9 @@
 | **Atores** | Sistema do Governo |
 | **Pré-condição** | Administrador autenticado. |
 | **Pós-condição** | Eleitor registrado. |
-| **Fluxo Principal** | **1. Cadastro:**<br>a) Sistema recebe nome, n? de inscrição e documento (e foto/biometria opcional);<br>b) Sistema valida exclusividade do n? de inscrição;<br>c) Sistema salva e confirma; |
+| **Fluxo Principal** | **1. Cadastro:**<br>a) Sistema recebe nome, n° de inscrição e documento (e foto/biometria opcional);<br>b) Sistema valida exclusividade do n° de inscrição;<br>c) Sistema salva e confirma; |
 | **Fluxo Alternativo** | Não há |
-| **Fluxo Exceção** | **[FE01] Número duplicado:** rejeitar. |
+| **Fluxo Exceção** | **2. Número duplicado:**<br>a) Sistema recebe nome, n° de inscrição e documento(e foto/biometria opcional);<br>b)Sistema verifica que eleitor já está cadastrado;<br>c)Sistema retorna aviso. |
 
 ---
 
@@ -124,7 +124,7 @@
 | **Pós-condição** | Candidato registrado. |
 | **Fluxo Principal** | **1. Cadastro:**<br>a) Sistema recebe cargo, nome, apelido, número e foto;<br>b) Sistema valida exclusividade do número por cargo;<br>c) Sistema salva e confirma. |
 | **Fluxo Alternativo** | Não há |
-| **Fluxo Exceção** | **[FE01] Número duplicado:** rejeitar. |
+| **Fluxo Exceção** | **2. Número duplicado:**<br>a) Sistema recebe cargo, nome, apelido, número e foto;<br>b) Sistema verifica que candidato já foi cadastrado;<br>c) Sistema retorna aviso. |
 
 ---
 
@@ -148,7 +148,7 @@
 | **Pós-condição** | Período de votação configurado. |
 | **Fluxo Principal** | **1. Período:**<br>a) Sistema recebe data/hora de abertura e encerramento;<br>b) Sistema aplica configuração e registra auditoria. |
 | **Fluxo Alternativo** | Não há |
-| **Fluxo Exceção** | **[FE01] Tentativa de alterar após início:** rejeitar. |
+| **Fluxo Exceção** | **2. Período inválido:**<br>a) Sistema recebe data/hora de abertura e encerramento;<br>b) Data de início é posterior à data de encerramento;<br>c) Sistema retorna erro solicitando nova data. |
 
 ---
 
@@ -160,7 +160,7 @@
 | **Pós-condição** | Resultado armazenado e pronto para contagem. |
 | **Fluxo Principal** | **1. Recebimento:**<br>a) Sistema recebe pacote assinado da UEv;<br>b) Sistema valida assinatura digital e integridade;<br>c) Sistema confirma identidade dda UEv;<br>d) Sistema armazena e marca UEv como importada. |
 | **Fluxo Alternativo** | Não há |
-| **Fluxo Exceção** | **[FE01] UEv não cadastrada:** rejeitar;<br>**[FE02] Pacote duplicado:** ignorar;<br>**[FE03] Falha de integridade:** solicitar reenvio. |
+| **Fluxo Exceção** | **2. Pacote duplicado:**<br>a) Sistema recebe pacote assinado da UEv;<br>b) Sistema valida assinatura digital e integridade;<br>c) Sistema verifica que dados já foram importados dessa UEv; <br>d) Sistema ignora;<br>**3. Falha de integridade:**<br>a) Sistema recebe pacote assinado da UEv;<br>b) Sistema valida assinatura digital e verifica probema na integridade;<br>c) Sistema solicita reenvio. |
 
 ---
 
@@ -172,7 +172,7 @@
 | **Pós-condição** | Totais calculados. |
 | **Fluxo Principal** | **1. Contabilização:**<br>a) Sistema agrega votos por cargo e por UEv;<br>b) Sistema soma nominais, brancos e nulos;<br>c) Sistema calcula percentuais e ranking por candidato;<br>d) Sistema Gera totais por UEv e total geral;<br>e) Sistema executa UC14 - Reportar ausência;<br>f) Sistema executa UC15 - Apresentar resultados. |
 | **Fluxo Alternativo** | Não há |
-| **Fluxo Exceção** | **[FE01] UEv ausente:** marcar apuração como parcial. |
+| **Fluxo Exceção** | Não há. |
 
 ---
 
@@ -196,7 +196,7 @@
 | **Pós-condição** | Resultados exibidos. |
 | **Fluxo Principal** | **1. Exibição:**<br>a) Sistema mostra totais por cargo (nominais, brancos, nulos, %);<br>b) Sistema permite filtragem por UEv; c) Sistema oferece opção UC16 - Gerar relatórios. |
 | **Fluxo Alternativo** | Não há |
-| **Fluxo Exceção** | **[FE01] Falha ao renderizar:** mostrar mensagem e permitir nova tentativa. |
+| **Fluxo Exceção** | **2. Falha ao renderizar:**<br>a) Sistema falha ao renderizar os gráficos e tenta novamente. |
 
 ---
 
@@ -208,4 +208,4 @@
 | **Pós-condição** | Arquivo gerado e disponível para download. |
 | **Fluxo Principal** | **1. Geração:**<br>a) Sistema permite que seja selecionado o formato(PDF/CSV);<br>b) Sistema compõe documento com hash/assinatura/QR;<br>c) Sistema disponibiliza para download ou envio oficial. |
 | **Fluxo Alternativo** | Não há |
-| **Fluxo Exceção** | **[FE01] Erro de geração:** exibir mensagem e permitir nova tentativa. |
+| **Fluxo Exceção** | **2. Erro de geração:**<br>a) Sistema permite que seja selecionado o formato(PDF/CSV);b) Sistema compõe documento com hash/assinatura/QR;<br>c)a) Sistema falha ao gerar arquivo e tenta novamente. |
