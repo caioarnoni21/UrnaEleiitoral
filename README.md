@@ -1,7 +1,8 @@
 # Urna Eleitoral
 
 ## Diagrama de Casos de Uso
-<img width="1319" height="731" alt="Diagrama sem nome drawio" src="https://github.com/user-attachments/assets/82520a92-4ecc-4e62-a9f6-db997b44e057" />
+<img width="1000" height="568" alt="image" src="https://github.com/user-attachments/assets/6a9ca819-68a6-47cb-8f2c-2dd2c508cfa6" />
+
 
 
 ## Especificação de Casos de Uso
