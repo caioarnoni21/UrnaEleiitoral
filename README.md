@@ -13,8 +13,8 @@
 | **Pré-condição** | UEv inicializada e período de votação aberto. |
 | **Pós-condição** | Eleitor habilitado para votar ou bloqueado em caso de falha. |
 | **Fluxo Principal** | **1. Identificar eleitor:**<br>a) Eleitor se apresenta ao terminal;<br>b) Sistema solicita nº de inscrição/biometria;<br>c). Sistema verifica se pertence à seção e não votou;<br>d) Sistema confirma identificação e libera acesso ao voto. |
-| **Fluxo Alternativo** | **Falha biométrica:** <br>a) Eleitor se apresenta ao terminal;<br>b) Sistema solicita n° de inscrição/biometria;<br>c) Eleitor apresenta a biometria com falha; <br>d) Sistema após reconhecer 3 tentativas falhas, apresenta digitação manual do n°/documento; <br>e) Sistema prossegue para a validação (passo 1.c).  |
-| **Fluxo Exceção** | **Eleitor não encontrado:**<br>a) Eleitor se apresenta ao terminal;<br>b) Sistema solicita n° de inscrição/biometria;<br>c) Sistema não encontra eleitor e encerra processo.<br><br>**Eleitor já votou:**<br>a) Eleitor se apresenta ao terminal.<br>b) Sistema solicita n° de inscrição/biometria;<br> c) Sistema verifica se pertence à secção e verifica que eleitor já votou; d) Sistema encerra processo.<br><br>**Período encerrado:** <br>a) Eleitor se apresenta ao terminal;<br>b) Sistema não solicita dados e informa que o período de votação já está encerrado. |
+| **Fluxo Alternativo** | **2. Falha biométrica:** <br>a) Eleitor se apresenta ao terminal;<br>b) Sistema solicita n° de inscrição/biometria;<br>c) Eleitor apresenta a biometria com falha; <br>d) Sistema após reconhecer 3 tentativas falhas, apresenta digitação manual do n°/documento; <br>e) Sistema prossegue para a validação (passo 1.c).  |
+| **Fluxo Exceção** | **3. Eleitor não encontrado:**<br>a) Eleitor se apresenta ao terminal;<br>b) Sistema solicita n° de inscrição/biometria;<br>c) Sistema não encontra eleitor e encerra processo.<br><br>**4. Eleitor já votou:**<br>a) Eleitor se apresenta ao terminal.<br>b) Sistema solicita n° de inscrição/biometria;<br> c) Sistema verifica se pertence à secção e verifica que eleitor já votou; d) Sistema encerra processo.<br><br>**5. Período encerrado:** <br>a) Eleitor se apresenta ao terminal;<br>b) Sistema não solicita dados e informa que o período de votação já está encerrado. |
 
 ---
 
@@ -22,11 +22,11 @@
 |---|---|
 | **Função** | Captar o voto do eleitor para todos os cargos ativos. |
 | **Atores** | Eleitor |
-| **Pré-condição** | UC00 concluído com sucesso. |
+| **Pré-condição** | UC01 concluído com sucesso. |
 | **Pós-condição** | Voto(s) do eleitor registrados e eleitor marcado como "votou". |
-| **Fluxo Principal** | **1. Votar em um candidato:**<br>a) Sistema apresenta o primeiro cargo;<br>b) Eleitor digita o número do candidato (**UC02**);<br>c) Sistema exibe dados e botões **Confirmar**, **Corrigir** e **Branco ([FA03])**;<br>d) Eleitor confirma (**UC03**);<br>e) Sistema contabiliza voto;<br>f) Avança para o próximo cargo ou encerra. |
-| **Fluxo Alternativo** | **2. [FA01] Votar em branco:** <br>a) Sistema apresenta campo para digitar;<br>b) Eleitor pressiona o botão "branco";<br>c) Sistema contabiliza voto;<br>d)Sistema avança para o próximo cargo ou encerra. (**UC04**);<br><br>3. **[FA02] Votar nulo:**<br> a) Sistema apresenta campo para digitar;<br>b) Eleitor digita número inexistente (**UC05**);<br>c) Sistema verifica número inexistente;<br>d) Sistema informa "voto nulo" e oferece "confirmar" ou "corrigir";<br> e) Eleitor "confirmar";<br>f) Sistema contabiliza e avança; <br><br> **4. [FA03] Corrigir voto:**<br> a) Eleitor pressiona "corrigir";<br>b)Sistema limpa entrada;<br>c) Eleitor digita novo número;<br>d) Sistema exibe o novo candidato e retorna ao passo 1.e. |
-| **Fluxo Exceção** | **[FE01] Timeout:** reinicia tela; após 2 timeouts, cancela sessão;<br>**[FE02] Falha de hardware:** reinicia tela sem perder votos confirmados. |
+| **Fluxo Principal** | **1. Votar em um candidato:**<br>a) Sistema apresenta o primeiro cargo;<br>b) Eleitor digita o número do candidato (**UC03**);<br>c) Sistema exibe dados e botões **Confirmar**, **Corrigir** e **Branco**;<br>d) Eleitor confirma (**UC04**);<br>e) Sistema contabiliza voto;<br>f) Avança para o próximo cargo ou encerra. |
+| **Fluxo Alternativo** | **2. Votar em branco:** <br>a) Sistema apresenta o primeiro cargo;<br>b) Eleitor pressiona o botão "branco";<br>c) Sistema contabiliza voto;<br>d)Sistema avança para o próximo cargo ou encerra. (**UC05**);<br><br> **3. Votar nulo:**<br> a) Sistema apresenta o primeiro cargo;<br>b) Eleitor digita número inexistente (**UC06**);<br>c) Sistema verifica número inexistente;<br>d) Sistema informa "voto nulo" e oferece "confirmar" ou "corrigir";<br> e) Eleitor "confirmar";<br>f) Sistema contabiliza e avança; <br><br> **4. Corrigir voto:**<br> a)Sistema apresenta o primeiro cargo;<br>b) Eleitor preenche o campo de digitação;<br>c) Eleitor pressiona "corrigir";<br>d) Sistema limpa entrada;<br>e) Eleitor digita novo número;<br>f) Sistema exibe o novo candidato e retorna ao passo 1.e. |
+| **Fluxo Exceção** | **5. Timeout:**<br>a) Sistema apresenta o primeiro cargo;<br>b) Eleitor não toma nenhuma ação;<br>c) Sistema apresenta uma mensagem de aviso de timeout; d) Após 2 timeouts, cancela sessão. |
 
 ---
 
