@@ -6,7 +6,7 @@
 
 ## Especificação de Casos de Uso
 
-| **Identificação** | **UC00 – Identificar Eleitor** |
+| **Identificação** | **UC01 – Identificar Eleitor** |
 |---|---|
 | **Função** | Identificar e habilitar o eleitor na UEv. |
 | **Atores** | Eleitor |
@@ -18,7 +18,7 @@
 
 ---
 
-| **Identificação** | **UC01 – Votar** |
+| **Identificação** | **UC02 – Votar** |
 |---|---|
 | **Função** | Captar o voto do eleitor para todos os cargos ativos. |
 | **Atores** | Eleitor |
@@ -30,7 +30,7 @@
 
 ---
 
-| **Identificação** | **UC02 – Selecionar Candidato** |
+| **Identificação** | **UC03 – Selecionar Candidato** |
 |---|---|
 | **Função** | Permitir que o eleitor escolha o candidato para o cargo atual. |
 | **Atores** | Eleitor |
@@ -43,7 +43,7 @@
 ---
 
 
-| **Identificação** | **UC03 – Confirmar Voto** |
+| **Identificação** | **UC04 – Confirmar Voto** |
 |---|---|
 | **Função** | Confirmar e gravar o voto do cargo atual. |
 | **Atores** | Eleitor |
@@ -55,7 +55,7 @@
 
 ---
 
-| **Identificação** | **UC04 – Votar em Branco** |
+| **Identificação** | **UC05 – Votar em Branco** |
 |---|---|
 | **Função** | Registrar voto em branco para o cargo atual. |
 | **Atores** | Eleitor |
@@ -67,7 +67,7 @@
 
 ---
 
-| **Identificação** | **UC05 – Votar Nulo** |
+| **Identificação** | **UC06 – Votar Nulo** |
 |---|---|
 | **Função** | Registrar voto nulo (número inexistente). |
 | **Atores** | Eleitor |
@@ -79,7 +79,7 @@
 
 ---
 
-| **Identificação** | **UC06 – Cadastrar UEv** |
+| **Identificação** | **UC07 – Cadastrar UEv** |
 |---|---|
 | **Função** | Registrar urna eletrônica na UEg. |
 | **Atores** | Sistema do Governo |
@@ -91,7 +91,7 @@
 
 ---
 
-| **Identificação** | **UC07 – Relacionar Eleitor à UEv** |
+| **Identificação** | **UC08 – Relacionar Eleitor à UEv** |
 |---|---|
 | **Função** | Associar eleitores a uma UEv/seção. |
 | **Atores** | Sistema do Governo |
@@ -103,7 +103,7 @@
 
 ---
 
-| **Identificação** | **UC08 – Cadastrar Eleitor** |
+| **Identificação** | **UC09 – Cadastrar Eleitor** |
 |---|---|
 | **Função** | Registrar dados do eleitor. |
 | **Atores** | Sistema do Governo |
@@ -115,7 +115,7 @@
 
 ---
 
-| **Identificação** | **UC09 – Cadastrar Candidato** |
+| **Identificação** | **UC10 – Cadastrar Candidato** |
 |---|---|
 | **Função** | Registrar candidato em cargo válido. |
 | **Atores** | Sistema do Governo |
@@ -127,7 +127,7 @@
 
 ---
 
-| **Identificação** | **UC10 – Definir Cargos** |
+| **Identificação** | **UC11 – Definir Cargos** |
 |---|---|
 | **Função** | Criar e manter lista de cargos do pleito. |
 | **Atores** | Sistema do Governo |
@@ -139,7 +139,7 @@
 
 ---
 
-| **Identificação** | **UC11 – Definir Período de Votos** |
+| **Identificação** | **UC12 – Definir Período de Votos** |
 |---|---|
 | **Função** | Definir data/hora de início e fim da votação. |
 | **Atores** | Sistema do Governo |
@@ -151,7 +151,7 @@
 
 ---
 
-| **Identificação** | **UC12 – Receber Resultado UEv** |
+| **Identificação** | **UC13 – Receber Resultado UEv** |
 |---|---|
 | **Função** | Receber e validar pacote de resultados da UEv. |
 | **Atores** | Sistema do Governo |
@@ -163,7 +163,7 @@
 
 ---
 
-| **Identificação** | **UC13 – Contabilizar os Votos** |
+| **Identificação** | **UC14 – Contabilizar os Votos** |
 |---|---|
 | **Função** | Totalizar votos de todas as UEv importadas. |
 | **Atores** | Sistema do Governo |
@@ -175,7 +175,7 @@
 
 ---
 
-| **Identificação** | **UC14 – Reportar Ausência** |
+| **Identificação** | **UC15 – Reportar Ausência** |
 |---|---|
 | **Função** | Listar eleitores que não votaram. |
 | **Atores** | Sistema do Governo |
@@ -187,7 +187,7 @@
 
 ---
 
-| **Identificação** | **UC15 – Apresentar Resultados** |
+| **Identificação** | **UC16 – Apresentar Resultados** |
 |---|---|
 | **Função** | Exibir resultados em tabelas e gráficos. |
 | **Atores** | Sistema do Governo |
@@ -199,7 +199,7 @@
 
 ---
 
-| **Identificação** | **UC16 – Gerar Relatório** |
+| **Identificação** | **UC17 – Gerar Relatório** |
 |---|---|
 | **Função** | Gerar arquivo PDF/CSV com os resultados. |
 | **Atores** | Sistema do Governo |
