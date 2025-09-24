@@ -39,7 +39,7 @@
 | **Pós-condição** | Candidato selecionado e pronto para confirmação. |
 | **Fluxo Principal** | **1. Selecionar candidato:**<br>a) Sistema apresenta campo para digitar número(ou lista/foto);<br>b) Eleitor digita número do candidato;<br>c) Sistema apresenta informações do candidato.<br>d)Eleitor confirma voto (UC04). |
 | **Fluxo Alternativo** | **2. Seleção por lista/foto:**<br> a)Sistema apresenta campo para digitar núumero de candidato;<br>b)Eleitor seleciona botão "listar candidatos";<br>c) Sistema apresenta lista dos candidatos com suas respectivas fotos;<br>c) Eleitor navega e escolhe o candidato pela lista/foto;<br>b) Sistema carrega dados do candidato e segue para confirmação. |
-| **Fluxo Exceção** | **3. Número inexistente:**<br>a) Sistema apresenta campo para digitar número de candidato;<br>b)Eleitor digita número inexistente;<br>c) Sistema apresenta opção de voto nulo. (UC05 (Nulo)). |
+| **Fluxo Exceção** | **3. Número inexistente:**<br>a) Sistema apresenta campo para digitar número de candidato;<br>b)Eleitor digita número inexistente;<br>c) Sistema apresenta opção de voto nulo. (UC06 (Nulo)). |
 
 ---
 
