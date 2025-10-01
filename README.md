@@ -7,86 +7,25 @@
 
 ## Especificação de Casos de Uso
 
-| **Identificação** | **UC01 – Identificar Eleitor** |
-|---|---|
-| **Função** | Identificar e habilitar o eleitor na UEv. |
-| **Atores** | Eleitor |
-| **Pré-condição** | UEv inicializada e período de votação aberto. |
-| **Pós-condição** | Eleitor habilitado para votar ou bloqueado em caso de falha. |
-| **Fluxo Principal** | **1. Identificar eleitor:**<br>a) Eleitor se apresenta ao terminal;<br>b) Sistema solicita nº de inscrição/biometria;<br>c). Sistema verifica se pertence à seção e não votou;<br>d) Sistema confirma identificação e libera acesso ao voto. |
-| **Fluxo Alternativo** | **2. Falha biométrica:** <br>a) Eleitor se apresenta ao terminal;<br>b) Sistema solicita n° de inscrição/biometria;<br>c) Eleitor apresenta a biometria com falha; <br>d) Sistema após reconhecer 3 tentativas falhas, apresenta digitação manual do n°/documento; <br>e) Sistema prossegue para a validação (passo 1.c).  |
-| **Fluxo Exceção** | **3. Eleitor não encontrado:**<br>a) Eleitor se apresenta ao terminal;<br>b) Sistema solicita n° de inscrição/biometria;<br>c) Sistema não encontra eleitor e encerra processo.<br><br>**4. Eleitor já votou:**<br>a) Eleitor se apresenta ao terminal.<br>b) Sistema solicita n° de inscrição/biometria;<br> c) Sistema verifica se pertence à secção e verifica que eleitor já votou; d) Sistema encerra processo.<br><br>**5. Período encerrado:** <br>a) Eleitor se apresenta ao terminal;<br>b) Sistema não solicita dados e informa que o período de votação já está encerrado. |
-
----
-
-| **Identificação** | **UC02 – Votar** |
+| **Identificação** | **UC01 – Votar** |
 |---|---|
 | **Função** | Captar o voto do eleitor para todos os cargos ativos. |
 | **Atores** | Eleitor |
-| **Pré-condição** | UC01 concluído com sucesso. |
+| **Pré-condição** | Eleitor com identificação válida e período de votações aberto. |
 | **Pós-condição** | Voto(s) do eleitor registrados e eleitor marcado como "votou". |
-| **Fluxo Principal** | **1. Votar em um candidato:**<br>a) Sistema apresenta o primeiro cargo;<br>b) Eleitor digita o número do candidato (**UC03**);<br>c) Sistema exibe dados e botões **Confirmar**, **Corrigir** e **Branco**;<br>d) Eleitor confirma (**UC04**);<br>e) Sistema contabiliza voto;<br>f) Avança para o próximo cargo ou encerra. |
-| **Fluxo Alternativo** | **2. Votar em branco:** <br>a) Sistema apresenta o primeiro cargo;<br>b) Eleitor pressiona o botão "branco";<br>c) Sistema contabiliza voto;<br>d)Sistema avança para o próximo cargo ou encerra. (**UC05**);<br><br> **3. Votar nulo:**<br> a) Sistema apresenta o primeiro cargo;<br>b) Eleitor digita número inexistente (**UC06**);<br>c) Sistema verifica número inexistente;<br>d) Sistema informa "voto nulo" e oferece "confirmar" ou "corrigir";<br> e) Eleitor "confirmar";<br>f) Sistema contabiliza e avança; <br><br> **4. Corrigir voto:**<br> a)Sistema apresenta o primeiro cargo;<br>b) Eleitor preenche o campo de digitação;<br>c) Eleitor pressiona "corrigir";<br>d) Sistema limpa entrada;<br>e) Eleitor digita novo número;<br>f) Sistema exibe o novo candidato e retorna ao passo 1.e. |
+| **Fluxo Principal** | **1. Votar em um candidato:**<br>a) Sistema apresenta o primeiro cargo;<br>b) Eleitor digita o número do candidato;<br>c) Sistema exibe dados e botões **Confirmar**, **Corrigir** e **Branco**;<br>d) Eleitor confirma ;<br>e) Sistema contabiliza voto;<br>f) Avança para o próximo cargo ou encerra. |
+| **Fluxo Alternativo** | **2. Votar em branco:** <br>a) Sistema apresenta o primeiro cargo;<br>b) Eleitor pressiona o botão "branco";<br>c) Sistema contabiliza voto;<br>d)Sistema avança para o próximo cargo ou encerra.<br><br> **3. Votar nulo:**<br> a) Sistema apresenta o primeiro cargo;<br>b) Eleitor digita número inexistente;<br>c) Sistema verifica número inexistente;<br>d) Sistema informa "voto nulo" e oferece "confirmar" ou "corrigir";<br> e) Eleitor "confirmar";<br>f) Sistema contabiliza e avança; <br><br> **4. Corrigir voto:**<br> a)Sistema apresenta o primeiro cargo;<br>b) Eleitor preenche o campo de digitação;<br>c) Eleitor pressiona "corrigir";<br>d) Sistema limpa entrada;<br>e) Eleitor digita novo número;<br>f) Sistema exibe o novo candidato e retorna ao passo 1.e. |
 | **Fluxo Exceção** | **5. Timeout:**<br>a) Sistema apresenta o primeiro cargo;<br>b) Eleitor não toma nenhuma ação;<br>c) Sistema apresenta uma mensagem de aviso de timeout;<br> d) Após 2 timeouts, cancela sessão. |
 
 ---
 
-| **Identificação** | **UC03 – Selecionar Candidato** |
+| **Identificação** | **UC02 – Gerenciar eleição** |
 |---|---|
-| **Função** | Permitir que o eleitor escolha o candidato para o cargo atual. |
-| **Atores** | Eleitor |
-| **Pré-condição** | UC02 em andamento. |
-| **Pós-condição** | Candidato selecionado e pronto para confirmação. |
-| **Fluxo Principal** | **1. Selecionar candidato:**<br>a) Sistema apresenta campo para digitar número(ou lista/foto);<br>b) Eleitor digita número do candidato;<br>c) Sistema apresenta informações do candidato.<br>d)Eleitor confirma voto (UC04). |
-| **Fluxo Alternativo** | **2. Seleção por lista/foto:**<br> a)Sistema apresenta campo para digitar núumero de candidato;<br>b)Eleitor seleciona botão "listar candidatos";<br>c) Sistema apresenta lista dos candidatos com suas respectivas fotos;<br>c) Eleitor navega e escolhe o candidato pela lista/foto;<br>b) Sistema carrega dados do candidato e segue para confirmação. |
-| **Fluxo Exceção** | **3. Número inexistente:**<br>a) Sistema apresenta campo para digitar número de candidato;<br>b)Eleitor digita número inexistente;<br>c) Sistema apresenta opção de voto nulo. (UC06 (Nulo)). |
-
----
-
-
-| **Identificação** | **UC04 – Confirmar Voto** |
-|---|---|
-| **Função** | Confirmar e gravar o voto do cargo atual. |
-| **Atores** | Eleitor |
-| **Pré-condição** | Uma escolha foi feita (nominal, branco ou nulo). |
-| **Pós-condição** | Voto gravado e contabilizado localmente. |
-| **Fluxo Principal** | **1. Confirmar voto:**<br>a) Sistema grava o voto em memória;<br>b). Sistema atualiza contador do cargo;<br>c) Sistema passa para o próximo cargo ou finaliza. |
-| **Fluxo Alternativo** | Não há |
-| **Fluxo Exceção** | **2. Falha de gravação:**<br>a) Sistema tenta novamente;<br>b) Sistema aciona operador caso o erro persista. |
-
----
-
-| **Identificação** | **UC05 – Votar em Branco** |
-|---|---|
-| **Função** | Registrar voto em branco para o cargo atual. |
-| **Atores** | Eleitor |
-| **Pré-condição** | UC02 em andamento para o cargo. |
-| **Pós-condição** | Voto branco contabilizado. |
-| **Fluxo Principal** | **1. Branco:**<br>a) Eleitor pressiona "Branco";<br>b) Sistema registra branco;<br>c) Sistema avança para próximo cargo ou encerra. |
-| **Fluxo Alternativo** | Não há |
-| **Fluxo Exceção** | Não há |
-
----
-
-| **Identificação** | **UC06 – Votar Nulo** |
-|---|---|
-| **Função** | Registrar voto nulo (número inexistente). |
-| **Atores** | Eleitor |
-| **Pré-condição** | UC03 detecta número inválido. |
-| **Pós-condição** | Voto nulo contabilizado. |
-| **Fluxo Principal** | **1. Nulo:**<br>a) Sistema informa número inválido;<br>b) Eleitor confirma;<br>c) Sistema contabiliza nulo. |
-| **Fluxo Alternativo** | Não há |
-| **Fluxo Exceção** | Não há |
-
----
-
-| **Identificação** | **UC07 – Cadastrar UEv** |
-|---|---|
-| **Função** | Registrar urna eletrônica na UEg. |
+| **Função** | Criar, validar, iniciar e encerrar a eleição. |
 | **Atores** | Sistema do Governo |
 | **Pré-condição** | Administrador autenticado. |
-| **Pós-condição** | UEv cadastrada e habilitada. |
-| **Fluxo Principal** | **1. Cadastro de UEv:**<br>a) Sistema do Governo envia código/serial, seção e local;<br>b) Sistema valida e salva. |
+| **Pós-condição** | Eleição criada, validada, iniciada ou encerrada. |
+| **Fluxo Principal** | **1.Criação da eleição:**<br>a) Sistema cria eleição;<br>b) Sistema valida a relação de cargos e candidatos;<br>c) Sistema valida as UEvs; <br>d) Sistema solicita período de eleição(início e fim); |
 | **Fluxo Alternativo** | Não há |
 | **Fluxo Exceção** | **2. UEv duplicada:**<br> a) Sistema do Governo envia código/serial, seção e local;<br>b)Sistema verifica que UEv já está cadastrada e retorna aviso. |
 
