@@ -25,25 +25,25 @@
 | **Atores** | Sistema do Governo |
 | **Pré-condição** | Administrador autenticado. |
 | **Pós-condição** | Eleição criada, validada, iniciada ou encerrada. |
-| **Fluxo Principal** | **1.Criação da eleição:**<br>a) Sistema cria eleição;<br>b) Sistema valida a relação de cargos e candidatos;<br>c) Sistema valida as UEvs; <br>d) Sistema solicita período de eleição(início e fim); |
+| **Fluxo Principal** | **1.Criação da eleição:**<br>a) Sistema inicia criação da eleição;<br>b) Sistema valida a relação de cargos e candidatos;<br>c) Sistema valida as UEvs; <br>d) Sistema solicita período de eleição(início e fim); |
 | **Fluxo Alternativo** | Não há |
-| **Fluxo Exceção** | **2. UEv duplicada:**<br> a) Sistema do Governo envia código/serial, seção e local;<br>b)Sistema verifica que UEv já está cadastrada e retorna aviso. |
+| **Fluxo Exceção** | **2. Candidatos/Cargos inválidos:**<br> a) Sistema inicia criação da eleição;<br>b)Sistema quantidade inválida de cargos(0) ou candidatos(0 ou 1).<br> **3. UEv duplicada:**<br>a) Sistema inicia criação da eleição;<br>b) Sistema valida a relação de cargos e candidatos;<br>c) Sistema detecta duplicidade de UEv e solicita manutenção;<br>**4. Período inválido:**<br>a) Sistema inicia criação da eleição;<br>b) Sistema valida a relação de cargos e candidatos;<br>c) Sistema valida as UEvs; <br>d) Sistema solicita período de eleição(início e fim);<br>e) Sistema verifica data inválida(data inicial < data atual ou data final > data inicial). |
 
 ---
 
-| **Identificação** | **UC08 – Relacionar Eleitor à UEv** |
+| **Identificação** | **UC03 – Gerenciar candidatos** |
 |---|---|
-| **Função** | Associar eleitores a uma UEv/seção. |
+| **Função** | Gerenciar os candidatos e seus respecitvos cargos. |
 | **Atores** | Sistema do Governo |
-| **Pré-condição** | UEv e eleitores cadastrados. |
-| **Pós-condição** | Relação salva para carga na UEv. |
-| **Fluxo Principal** | **1. Relacionamento:**<br>a) Sistema do governo seleciona UEv;<br>b) Sistema envia a lista de eleitores da seção;<br>c) Sistema armazena as associações. |
+| **Pré-condição** | Administrador autenticado. |
+| **Pós-condição** | Cargos e candidatos prontos para serem associados à eleição. |
+| **Fluxo Principal** | **1. Gerenciar candidatos :**<br>a) Sistema solicita a criação de um cargo;<br>b) Sistema solicita as informações do candidato para o cargo(nome, apelido, número e fotografia.);<br>c) Sistema valida exclusividade do candidato.<br>d) Sistema salva e apresenta opção para próximo candidato, próximo cargo, ou finalizar. |
 | **Fluxo Alternativo** | Não há |
 | **Fluxo Exceção** | Não há |
 
 ---
 
-| **Identificação** | **UC09 – Cadastrar Eleitor** |
+| **Identificação** | **UC04 – Contabilizar votos** |
 |---|---|
 | **Função** | Registrar dados do eleitor. |
 | **Atores** | Sistema do Governo |
