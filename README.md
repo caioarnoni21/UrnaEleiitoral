@@ -1,7 +1,8 @@
 # Urna Eleitoral
 
 ## Diagrama de Casos de Uso
-<img width="1000" height="568" alt="image" src="https://github.com/user-attachments/assets/6a9ca819-68a6-47cb-8f2c-2dd2c508cfa6" />
+<img width="1197" height="676" alt="image" src="https://github.com/user-attachments/assets/465e4877-65f8-4754-b2df-33b7376edaa6" />
+
 
 
 
@@ -55,7 +56,7 @@
 
 ---
 
-| **Identificação** | **UC10 – Cadastrar Candidato** |
+| **Identificação** | **UC05 – Disponibilizar resultados** |
 |---|---|
 | **Função** | Registrar candidato em cargo válido. |
 | **Atores** | Sistema do Governo |
