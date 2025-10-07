@@ -39,8 +39,7 @@
 | **Pré-condição** | Administrador autenticado. |
 | **Pós-condição** | Cargos e candidatos prontos para serem associados à eleição. |
 | **Fluxo Principal** | **1. Gerenciar candidatos :**<br>a) Sistema exibe lista de cargos e opção para "Criar novo cargo" e "Editar cargo";<br>b) Administrador seleciona "Criar novo cargo";<br>c) Sistema solicita e valida cargo(quantidade de cargos criados, número e nome).<br>d)Sistema exibe opção de "Cadastrar candidato" e "Gerenciar candidato";<br>e) Administrador seleciona "Cadastrar candidato";<br>f)Sistema solicita dados do candidato(nome, apelido, número e fotografia).<br>g) Sistema valida e salva candidato.|
-| **Fluxo Alternativo** |  **2. Excluir cargo :**<br>a) Sistema exibe lista de cargos e opção para "Criar novo cargo" e "Editar cargo";<br>b) Administrador seleciona "Editar cargo";<br>c) Sistema soclita nome do cargo;<br>d) Sistema apresenta candidatos do cargo, opção "Editar candidato" e "Editar cargo"<br>e)Administrador seleciona "Editar cargo";<br>f) Sistema apresenta os campos do nome e número do cargo editáveis e opções "Salvar" e "Excluir"<br> g) Administrador seleciona "Excluir"<br>h) Sistema exclui cargo e seus candidatos.|<br><br>
-**3. Excluir candidato :**<br>a) Sistema exibe lista de cargos e opção para "Criar novo cargo" e "Editar cargo";<br>b) Administrador seleciona "Editar cargo";<br>c) Sistema soclita nome do cargo;<br>d) Sistema apresenta candidatos do cargo, opção "Editar candidato" e "Editar cargo"<br>e)Administrador seleciona "Editar candidato";<br>f) Sistema apresenta lista dos canidatos à esse cargo;<br> g) Administrador seleciona candidato a ser editado;<br>h)Sistema apresenta dados do candidto(nome, apelido, número e fotografia) editáveis e opções "Salvar" e "Excluir"<br> g) Administrador seleciona "Excluir"<br>h) Sistema exclui candidato selecionado.|<br><br>
+| **Fluxo Alternativo** |  **2. Excluir cargo :**<br>a) Sistema exibe lista de cargos e opção para "Criar novo cargo" e "Editar cargo";<br>b) Administrador seleciona "Editar cargo";<br>c) Sistema soclita nome do cargo;<br>d) Sistema apresenta candidatos do cargo, opção "Editar candidato" e "Editar cargo"<br>e)Administrador seleciona "Editar cargo";<br>f) Sistema apresenta os campos do nome e número do cargo editáveis e opções "Salvar" e "Excluir"<br> g) Administrador seleciona "Excluir"<br>h) Sistema exclui cargo e seus candidatos.<br><br>**3. Excluir candidato :**<br>a) Sistema exibe lista de cargos e opção para "Criar novo cargo" e "Editar cargo";<br>b) Administrador seleciona "Editar cargo";<br>c) Sistema soclita nome do cargo;<br>d) Sistema apresenta candidatos do cargo, opção "Editar candidato" e "Editar cargo"<br>e)Administrador seleciona "Editar candidato";<br>f) Sistema apresenta lista dos canidatos à esse cargo;<br> g) Administrador seleciona candidato a ser editado;<br>h)Sistema apresenta dados do candidto(nome, apelido, número e fotografia) editáveis e opções "Salvar" e "Excluir"<br> g) Administrador seleciona "Excluir"<br>h) Sistema exclui candidato selecionado.|<br><br>
 (editar)
 | **Fluxo Exceção** | **4. Número máximo de cargos :**<br>a) Sistema exibe lista de cargos e opção para "Criar novo cargo" e "Editar cargo";<br>b) Administrador seleciona "Criar novo cargo";<br>c) Sistema verifica quantidade limite de cargos cadastrados(8) e exibe lista de edição de cargos. |
 
@@ -48,106 +47,23 @@
 
 | **Identificação** | **UC04 – Contabilizar votos** |
 |---|---|
-| **Função** | Registrar dados do eleitor. |
+| **Função** | Receber, validar e contabilizar os votos por cada UEv(100máx.). |
 | **Atores** | Sistema do Governo |
-| **Pré-condição** | Administrador autenticado. |
-| **Pós-condição** | Eleitor registrado. |
-| **Fluxo Principal** | **1. Cadastro:**<br>a) Sistema recebe nome, n° de inscrição e documento (e foto/biometria opcional);<br>b) Sistema valida exclusividade do n° de inscrição;<br>c) Sistema salva e confirma; |
+| **Pré-condição** | Eleição finalizada e todos votos recebidos. |
+| **Pós-condição** | Votos apurados por canditado, variações de votos(ausentes, brancos e nulos) e por UEv. |
+| **Fluxo Principal** | **1. Disponibilizar total de votos:**<br>a) Sistema valida se eleição já concluiu o período de votação;<br>b) Sistema recebe dados validados das UEvs;<br>c) Sistema organiza dados por UEvs, cargos, candidatos, votos brancos e nulos;<br>d) Sistema notifica eleitores ausentes.|
 | **Fluxo Alternativo** | Não há |
-| **Fluxo Exceção** | **2. Número duplicado:**<br>a) Sistema recebe nome, n° de inscrição e documento(e foto/biometria opcional);<br>b)Sistema verifica que eleitor já está cadastrado;<br>c)Sistema retorna aviso. |
+| **Fluxo Exceção** | **2. Período de eleição incompleto:**<br>a) Sistema verifica que a "data atual < data de finalização da eleição" e retorna notificação . | |
 
 ---
 
 | **Identificação** | **UC05 – Disponibilizar resultados** |
 |---|---|
-| **Função** | Registrar candidato em cargo válido. |
+| **Função** | Apresentar resultados da eleição. |
 | **Atores** | Sistema do Governo |
-| **Pré-condição** | Cargos definidos. |
-| **Pós-condição** | Candidato registrado. |
-| **Fluxo Principal** | **1. Cadastro:**<br>a) Sistema recebe cargo, nome, apelido, número e foto;<br>b) Sistema valida exclusividade do número por cargo;<br>c) Sistema salva e confirma. |
+| **Pré-condição** | Votos validados(UC04). |
+| **Pós-condição** | Relatórios da eleição em forma de tabela ou gráficos, apresentados de maneira geral ou separados por UEv. Incluindo votos brancos, nulos e eleitores ausentes. |
+| **Fluxo Principal** | **1. Gerar relatórios:**<br>a) Sistema valida dados recebidos;<br>b) Sistema organiza dados de forma geral e separados por UEv;<br>c) Sistema apresenta esses dados em forma de gráficos e tabelas.d) Sistema disponibiliza dados para download. |
 | **Fluxo Alternativo** | Não há |
-| **Fluxo Exceção** | **2. Número duplicado:**<br>a) Sistema recebe cargo, nome, apelido, número e foto;<br>b) Sistema verifica que candidato já foi cadastrado;<br>c) Sistema retorna aviso. |
+| **Fluxo Exceção** | **2. Ausência de dados:**<br>a) Sistema não recebe dados para gerar os relatórios. |
 
----
-
-| **Identificação** | **UC11 – Definir Cargos** |
-|---|---|
-| **Função** | Criar e manter lista de cargos do pleito. |
-| **Atores** | Sistema do Governo |
-| **Pré-condição** | Administrador autenticado. |
-| **Pós-condição** | Lista de cargos criada/atualizada. |
-| **Fluxo Principal** | **1. Definir cargos:**<br>a) Sistema recebe lista de cargos(máximo 8);<br>b) Sistema valida limites e salva; |
-| **Fluxo Alternativo** | Não há |
-| **Fluxo Exceção** | Não há |
-
----
-
-| **Identificação** | **UC12 – Definir Período de Votos** |
-|---|---|
-| **Função** | Definir data/hora de início e fim da votação. |
-| **Atores** | Sistema do Governo |
-| **Pré-condição** | Administrador autenticado. |
-| **Pós-condição** | Período de votação configurado. |
-| **Fluxo Principal** | **1. Período:**<br>a) Sistema recebe data/hora de abertura e encerramento;<br>b) Sistema aplica configuração e registra auditoria. |
-| **Fluxo Alternativo** | Não há |
-| **Fluxo Exceção** | **2. Período inválido:**<br>a) Sistema recebe data/hora de abertura e encerramento;<br>b) Data de início é posterior à data de encerramento;<br>c) Sistema retorna erro solicitando nova data. |
-
----
-
-| **Identificação** | **UC13 – Receber Resultado UEv** |
-|---|---|
-| **Função** | Receber e validar pacote de resultados da UEv. |
-| **Atores** | Sistema do Governo |
-| **Pré-condição** | UEv cadastrada e transmissão concluída. |
-| **Pós-condição** | Resultado armazenado e pronto para contagem. |
-| **Fluxo Principal** | **1. Recebimento:**<br>a) Sistema recebe pacote assinado da UEv;<br>b) Sistema valida assinatura digital e integridade;<br>c) Sistema confirma identidade dda UEv;<br>d) Sistema armazena e marca UEv como importada. |
-| **Fluxo Alternativo** | Não há |
-| **Fluxo Exceção** | **2. Pacote duplicado:**<br>a) Sistema recebe pacote assinado da UEv;<br>b) Sistema valida assinatura digital e integridade;<br>c) Sistema verifica que dados já foram importados dessa UEv; <br>d) Sistema ignora;<br>**3. Falha de integridade:**<br>a) Sistema recebe pacote assinado da UEv;<br>b) Sistema valida assinatura digital e verifica probema na integridade;<br>c) Sistema solicita reenvio. |
-
----
-
-| **Identificação** | **UC14 – Contabilizar os Votos** |
-|---|---|
-| **Função** | Totalizar votos de todas as UEv importadas. |
-| **Atores** | Sistema do Governo |
-| **Pré-condição** | Pelo menos uma UEv importada. |
-| **Pós-condição** | Totais calculados. |
-| **Fluxo Principal** | **1. Contabilização:**<br>a) Sistema agrega votos por cargo e por UEv;<br>b) Sistema soma nominais, brancos e nulos;<br>c) Sistema calcula percentuais e ranking por candidato;<br>d) Sistema Gera totais por UEv e total geral;<br>e) Sistema executa UC14 - Reportar ausência;<br>f) Sistema executa UC15 - Apresentar resultados. |
-| **Fluxo Alternativo** | Não há |
-| **Fluxo Exceção** | Não há. |
-
----
-
-| **Identificação** | **UC15 – Reportar Ausência** |
-|---|---|
-| **Função** | Listar eleitores que não votaram. |
-| **Atores** | Sistema do Governo |
-| **Pré-condição** | Contabilização concluída. |
-| **Pós-condição** | Relatório de ausentes gerado. |
-| **Fluxo Principal** | **1. Ausência:**<br>a) Sistema compara base de eleitores com a lista de votantes por UEv;<br>b) Sistema identifica ausentes por UEv;<br>c) Sistema gera listagem de ausentes. |
-| **Fluxo Alternativo** | Não há |
-| **Fluxo Exceção** | Não há |
-
----
-
-| **Identificação** | **UC16 – Apresentar Resultados** |
-|---|---|
-| **Função** | Exibir resultados em tabelas e gráficos. |
-| **Atores** | Sistema do Governo |
-| **Pré-condição** | UC13 finalizado. |
-| **Pós-condição** | Resultados exibidos. |
-| **Fluxo Principal** | **1. Exibição:**<br>a) Sistema mostra totais por cargo (nominais, brancos, nulos, %);<br>b) Sistema permite filtragem por UEv; c) Sistema oferece opção UC16 - Gerar relatórios. |
-| **Fluxo Alternativo** | Não há |
-| **Fluxo Exceção** | **2. Falha ao renderizar:**<br>a) Sistema falha ao renderizar os gráficos e tenta novamente. |
-
----
-
-| **Identificação** | **UC17 – Gerar Relatório** |
-|---|---|
-| **Função** | Gerar arquivo PDF/CSV com os resultados. |
-| **Atores** | Sistema do Governo |
-| **Pré-condição** | UC15 em exibição. |
-| **Pós-condição** | Arquivo gerado e disponível para download. |
-| **Fluxo Principal** | **1. Geração:**<br>a) Sistema permite que seja selecionado o formato(PDF/CSV);<br>b) Sistema compõe documento com hash/assinatura/QR;<br>c) Sistema disponibiliza para download ou envio oficial. |
-| **Fluxo Alternativo** | Não há |
-| **Fluxo Exceção** | **2. Erro de geração:**<br>a) Sistema permite que seja selecionado o formato(PDF/CSV);b) Sistema compõe documento com hash/assinatura/QR;<br>c)a) Sistema falha ao gerar arquivo e tenta novamente. |
