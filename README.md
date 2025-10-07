@@ -38,9 +38,11 @@
 | **Atores** | Sistema do Governo |
 | **Pré-condição** | Administrador autenticado. |
 | **Pós-condição** | Cargos e candidatos prontos para serem associados à eleição. |
-| **Fluxo Principal** | **1. Gerenciar candidatos :**<br>a) Sistema solicita a criação de um cargo;<br>b) Sistema solicita as informações do candidato para o cargo(nome, apelido, número e fotografia.);<br>c) Sistema valida exclusividade do candidato.<br>d) Sistema salva e apresenta opção para próximo candidato, próximo cargo, ou finalizar. |
-| **Fluxo Alternativo** | Não há |
-| **Fluxo Exceção** | Não há |
+| **Fluxo Principal** | **1. Gerenciar candidatos :**<br>a) Sistema exibe lista de cargos e opção para "Criar novo cargo" e "Editar cargo";<br>b) Administrador seleciona "Criar novo cargo";<br>c) Sistema solicita e valida cargo(quantidade de cargos criados, número e nome).<br>d)Sistema exibe opção de "Cadastrar candidato" e "Gerenciar candidato";<br>e) Administrador seleciona "Cadastrar candidato";<br>f)Sistema solicita dados do candidato(nome, apelido, número e fotografia).<br>g) Sistema valida e salva candidato.|
+| **Fluxo Alternativo** |  **2. Excluir cargo :**<br>a) Sistema exibe lista de cargos e opção para "Criar novo cargo" e "Editar cargo";<br>b) Administrador seleciona "Editar cargo";<br>c) Sistema soclita nome do cargo;<br>d) Sistema apresenta candidatos do cargo, opção "Editar candidato" e "Editar cargo"<br>e)Administrador seleciona "Editar cargo";<br>f) Sistema apresenta os campos do nome e número do cargo editáveis e opções "Salvar" e "Excluir"<br> g) Administrador seleciona "Excluir"<br>h) Sistema exclui cargo e seus candidatos.|<br><br>
+**3. Excluir candidato :**<br>a) Sistema exibe lista de cargos e opção para "Criar novo cargo" e "Editar cargo";<br>b) Administrador seleciona "Editar cargo";<br>c) Sistema soclita nome do cargo;<br>d) Sistema apresenta candidatos do cargo, opção "Editar candidato" e "Editar cargo"<br>e)Administrador seleciona "Editar candidato";<br>f) Sistema apresenta lista dos canidatos à esse cargo;<br> g) Administrador seleciona candidato a ser editado;<br>h)Sistema apresenta dados do candidto(nome, apelido, número e fotografia) editáveis e opções "Salvar" e "Excluir"<br> g) Administrador seleciona "Excluir"<br>h) Sistema exclui candidato selecionado.|<br><br>
+(editar)
+| **Fluxo Exceção** | **4. Número máximo de cargos :**<br>a) Sistema exibe lista de cargos e opção para "Criar novo cargo" e "Editar cargo";<br>b) Administrador seleciona "Criar novo cargo";<br>c) Sistema verifica quantidade limite de cargos cadastrados(8) e exibe lista de edição de cargos. |
 
 ---
 
