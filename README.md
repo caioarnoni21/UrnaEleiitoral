@@ -67,3 +67,11 @@
 | **Fluxo Alternativo** | Não há |
 | **Fluxo Exceção** | **2. Ausência de dados:**<br>a) Sistema não recebe dados para gerar os relatórios. |
 
+
+# Diagrama de Sequencia 
+
+## UC 01 - VOTAR
+
+<img width="320" height="624" alt="image" src="https://github.com/user-attachments/assets/93b7ad8a-9500-4a22-817a-5dfe80e57261" />
+
+
